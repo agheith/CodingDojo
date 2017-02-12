@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+
+	table{
+		border: 1px solid black;
+	}
+	th{
+		padding-right: 30px;
+	}
+
+	</style>
+	<title>User jQuery</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+		$('button').click(function(){
+			var output = "";
+			output += "<tr>";
+			output += "<td>" + $('#firstName').val() + "</td>";
+			output += "<td>" + $('#lastName').val() + "</td>";
+			output += "<td>" + $('#emailAddress').val() + "</td>";
+			output += "<td>" + $('#contactNo').val() + "</td>";
+			output += "</tr>";
+			$('tbody').append(output);
+			return false;
+		});
+	});
+
+	</script>
+</head>
+<body>
+
+	<table id="main_table">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email Address</th>
+				<th>Contact #</th>
+			</tr>
+			</thead>
+			<tbody>
+			</tbody>
+	</table>
+
+	<form>
+		<h1>Add User</h1>
+			<div>
+			First Name: <input type="text" name="firstName" id="firstName" value="Amer">
+			</div>
+			<div>
+			Last Name: <input type="text" name="lastName" id="lastName" value="Gheith">
+			</div>
+			<div>
+			First Name: <input type="text" name="emailAddress" id="emailAddress" value="amer@amer.com">
+			</div>
+			<div>
+			First Name: <input type="text" name="contactNo" id="contactNo" value="111-111-1111">
+			</div>
+			<button>Add User</button>
+	</form>
+
+</body>
+</html>

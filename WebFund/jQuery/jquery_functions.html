@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Functions</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+
+	$('#addClass').click(function(){
+	$('p').css("color", "red");
+	});
+
+	$('#append').click(function(){
+	$('#p1').append('<b>Append Text.... jQuery assignment/b>.')
+	});
+
+	$('#before').click(function(){
+	$('#p1').before('<p>Is jQuery cool?')
+	});
+
+	$('#after').click(function(){
+	$('#p1').after('<p>A lil easier than JavaScript!')
+	});
+
+	$('#hideButton').click(function(){
+		$('h1').hide();
+	});
+
+	$('#show').click(function(){
+		$('h1').show();
+	});
+
+	$('#show').click(function(){
+		$('h1').show();
+	});
+
+	$('#toggle').click(function(){
+		$('img').toggle();
+	});
+
+	$('#slideDown').click(function(){
+		$('img').slideDown()
+	});
+
+
+	$('#slideUp').click(function(){
+		$('img').slideUp()
+	});
+
+	$('#slideToggle').click(function(){
+		$('img').slideToggle()
+	});
+
+	$('#fadeIn').click(function(){
+	$('img').fadeIn()
+	});
+
+	$('#fadeOut').click(function(){
+	$('img').fadeOut()
+	});
+
+	$('#p2').click(function(){
+	$('#p2').html('<p>Why did you click me!!<p>')
+	});
+
+	$('img').click(function(){
+		alert("Image width: " + $('img').attr("width"));
+	});
+
+	$('#giveName').click(function(){
+		$('#fName').val('Amer');
+		$('#lName').val('Gheith');
+	});
+
+	});
+
+</script>
+
+
+</head>
+<body>
+
+<h1>Add Class</h1>
+<p id="p1">Click the button to add class 'red' to this paragraph.</p>
+<button id="addClass">AddClass</button> 
+<button id="append">Append</button>
+<button id="before">Click to add text before the first paragraph</button>
+<button id="after">Click to add text after the first paragraph</button><br><br>
+
+<form>
+<label>First Name</label>
+<input type="text" name="firstName" id="fName" >
+<label>Last Name</label>
+<input type="text" name="lastName" id="lName" >
+<input type="button" name="name" id="giveName" value="Click for Name">
+</form>
+
+
+<h1>Hide Button</h1>
+<button id="hideButton">Hide</button> 
+<p id="p2">Clicke me and look what happens</p>
+
+
+<h1>Show Button</h1>
+<button id="show">Show</button> 
+<p>Click the button to append a new paragraph..</p>
+
+<img src="../Desktop/photo_warriors.png" alt="warriors" width="200px">
+<button id="toggle">Toggle Button</button>
+<button id="slideDown">Slide Down Button</button>
+<button id="slideUp">Slide Up Button</button>
+<button id="slideToggle">Slide Toggle Button</button>
+<button id="fadeIn">Fade In Button</button>
+<button id="fadeOut">Fade Out Button</button>
+
+
+
+</body>
+</html>

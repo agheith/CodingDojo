@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Card</title>
+  <style>
+    .box{
+      width: 300px;
+      height: 200px;
+      border: 1px solid black;
+      margin: 5px;
+      padding: 5px;
+      display: inline-block;
+      text-align: center;
+    }
+		textarea{
+			width: 300px;
+			height: 50px;
+		}
+
+  </style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  	<script type="text/javascript">
+      $(document).ready(function(){
+
+				var cardCount = 1;
+				$("form").submit(function(){
+				    var firstName = $("#first-name").val();
+				    var lastName = $("#last-name").val();
+				    var description = $("#description-input").val();
+				    cardCount++;
+				    $(".card-area").append("<div class='contact-card'><h2>" + firstName + " " + lastName + "</h2><div id='" + cardCount + "' class='description'>" + description + "</div></div>");
+				    $("#" + cardCount).hide();
+				    return false;
+				});
+				$(document).on("click", ".contact-card", function(){
+				    $(this).children().toggle();
+				});
+
+			});
+
+			// var cardCount = 1;
+			// $("form").submit(function(){
+			//     var firstName = $("#first-name").val();
+			//     var lastName = $("#last-name").val();
+			//     var description = $("#description-input").val();
+			//     cardCount++;
+			//     $(".card-area").append("<div class='contact-card'><h2>" + firstName + " " + lastName + "</h2><div id='" + cardCount + "' class='description'>" + description + "</div></div>");
+			//     $("#" + cardCount).hide();
+			//     return false;
+			// });
+			// $(document).on("click", ".contact-card", function(){
+			//     $(this).children().toggle();
+			// });
+
+
+
+      });
+      </script>
+</head>
+		<body>
+        <div class="form-area">
+            <form class="contact-input" action="test.html" method="post">
+                <label>First Name: <input type="text" id="first-name" value="someone"></label>
+                <label>Last Name: <input type="text" id="last-name" value="someone"></label>
+                <p>Description:</p>
+                <textarea id="description-input" name="description" rows="8" cols="80"></textarea>
+                <input type="submit" value="Add Card">
+            </form>
+        </div>
+        <div class="card-area">
+        </div>
+    </body>
+</html>
+
+
+
+
+<!-- <body>
+  <h1>Add a friend to contact card</h1>
+  <form method="post">
+    <div>
+      First Name: <input type="text" name="firstName" id="firstName">
+    </div>
+    <div>
+      Last Name: <input type="text" name="lastName" id="lastName">
+    </div>
+    <div>
+      <p>Description:<p><textarea id = "description" placeholder="Enter Description"></textarea><br><br>
+      <button>Add User</button>
+    </div>
+  </form>
+
+ <div class="card">
+
+</div>
+
+</body>
+</html> -->
