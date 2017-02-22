@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ninja Gold</title>
+        <script src ="src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js""></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'stylings.css')}}" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Ninja Gold</h1>
+            <h2>Your gold: {{session['totalgold']}}</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>Farm</h3>
+                    <h5>Earns 10-20 golds</h5>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="farm" />
+                        <button class="btn btn-primary" type="submit">Find Gold!</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <h3>Cave</h3>
+                    <h5>Earns 5-10 golds</h5>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="cave" />
+                        <button class="btn btn-primary" type="submit">Find Gold!</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <h3>House</h3>
+                    <h5>Earns 2-5 golds</h5>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="house" />
+                        <button class="btn btn-primary" type="submit">Find Gold!</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <h3>Casino</h3>
+                    <h5>earns/takes 0-50 golds</h5>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="casino" />
+                        <button class="btn btn-primary" type="submit">Find Gold!</button>
+                    </form>
+                </div>
+            </div>
+            <h3>Activities</h3>
+            {% for adv in session['adventures'][::-1] %}
+            {% if adv.find("lost") == -1 %}
+            <p class="green">
+                {{adv}}
+            </p>
+            {% else %}
+            <p class="red">
+                {{adv}}
+            </p>
+            {% endif %}
+            {%endfor%}
+        </div>
+    </body>
+</html>
+
+<!--
+
+each button process money, determine how much gold to take away.
+form is used to submit information to the server and that form needs to tell the server which form is triggering the request.
+user just hit the button. input users cant see. give each form hidden input. and the value would be either house cave or casino -->

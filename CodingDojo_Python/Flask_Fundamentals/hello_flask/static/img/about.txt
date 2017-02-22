@@ -1,0 +1,2 @@
+nking an image -->
+<img src="{{ url_for('static', filename='img/my_img.png') }}">

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src ="src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js""></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='survey_style.css') }}">
+        <meta charset="utf-8">
+        <title>Dojo Survey</title>
+    </head>
+    <body>
+        <form class="container" action="/result" method="post">
+            <label for="example-text-input" class="col-2 col-form-label">Text</label>
+            <div class="col-10">
+              <input class="form-control" type="text" name="name" value="Amer" id="example-text-input">
+            </div>
+            <div class="form-group">
+              <label for="exampleSelect1">Location</label>
+              <select class="form-control" id="exampleSelect1" name="location">
+                <option>San Jose</option>
+                <option>Seattle</option>
+                <option>Berkely</option>
+                <option>Chicago</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleSelect1">Favorite Language</label>
+              <select class="form-control" id="exampleSelect1" name="language">
+                <option>Python</option>
+                <option>JavaScript</option>
+                <option>PHP</option>
+                <option>Ruby</option>
+                <option>Swift</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleTextarea">Comment (Optioanl)</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3" name="comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+        <div class="alert alert-info" role="alert">
+            {% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for message in messages %}
+						<p>{{ message }}</p>
+					{% endfor %}
+			    {% endif %}
+			{% endwith %}
+        </div>
+    </body>
+</html>

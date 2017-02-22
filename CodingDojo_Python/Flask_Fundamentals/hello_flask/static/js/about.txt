@@ -1,0 +1,2 @@
+nking a javascript file -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/my_script.js') }}"></script>
