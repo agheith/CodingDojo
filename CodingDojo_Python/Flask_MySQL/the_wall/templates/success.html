@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Successful Login</title>
+        {% include 'styleLinks.html' %}
+    </head>
+    <body>
+        <nav class="teal">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">CodingDojo Wall</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">Welcome {{username}}</a></li>
+                    <li><a href="/log_out">Log off</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <h1>Welcome to the wall!</h1>
+            <div class="row">
+                <form class="col s12" action="/create_message" method="post">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea name="message" class="materialize"></textarea>
+                            <label for="message">Post your message!</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Post a message</button>
+                </form>
+
+                <div class="showmessages">
+                    <!-- look at every single message, each one show the user who left the message -->
+                    {% for msg in msgs %}
+                    <h5>
+                        {{msg.first_name}} {{msg.last_name}} - {{msg.created_at}}
+                    </h5>
+                    <h6 class="textmessage">
+                        {{msg.message}}
+                    </h6>
+                    <div class="showcomments">
+                        <!-- go through all comments that belong to the message  -->
+                        {% for comment in comments %}
+                        {% if comment.message_id == msg.id %}
+                        <p class="commenter">
+                            {{comment.first_name}}{{comment.last_name}}{{comment.created_at}}
+                        </p>
+                        <p>
+                            {{coment.comment}}
+                        </p>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <form class="col s10 offset-s2" action="/create_comment" method="post">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea name="comment" class="materialize"></textarea>
+                                    <label for="comment">Post your comment!</label>
+                                </div>
+                            </div>
+                            <input type="hidden" name="msgid" value="{{msg.id}}" />
+                            <button type="submit" class="btn">Post a comment</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
