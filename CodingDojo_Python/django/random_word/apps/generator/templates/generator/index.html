@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src ="src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js""></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <meta charset="utf-8">
+        <title>Randomr Word Generator</title>
+    </head>
+    <body>
+        <form action="/generate" method="post">
+            <div class="form-group has-success">
+              <label class="control-label" for="inputSuccess1">Random Word (attemp #{{request.session.counter}})</label>
+              {% csrf_token %}
+              <input type="text" readonly class="form-control" id="inputSuccess1" aria-describedby="helpBlock2" value="{{request.session.ranword}}">
+              <button type="submit" class="btn btn-success">Generate</button>
+            </div>
+        </form>
+    </body>
+</html>
