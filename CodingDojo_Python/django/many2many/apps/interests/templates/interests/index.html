@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Many to Many</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <style media="screen">
+    *{
+        margin: 0 auto;
+        width: 50%;
+        background: lightblue;
+    }
+    .center{
+        padding-top: 200px;
+    }
+    .view{
+        width: 150px;
+        margin-left: 15px;
+        background: white;
+    }
+    .show{
+        margin-top: 10px;
+        width: 150px;
+        background: white;
+    }
+    </style>
+    <body>
+    <div class="container center">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form class="container" action="/register" method="POST">
+             {% csrf_token %}
+            <div class="container form-group col-xs-4">
+                <label>Name:</label>
+                <input type="text" class="form-control" name="name">
+                <label>Interest:</label>
+                <input type="text" class="form-control input-sm" name="interest">
+                <input class="show" type="submit" name="show" value="Submit">
+            </div>
+        </form>
+        <form class="container" action="/viewpeople" method="POST">
+             {% csrf_token %}
+            <input class="view" type="submit" name="people" value="View People">
+        </form>
+    </div>
+    </body>
+</html>
